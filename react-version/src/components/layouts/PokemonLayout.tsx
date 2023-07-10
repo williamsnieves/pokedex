@@ -21,19 +21,21 @@ const PokemonLayout = () => {
     type: [],
   };
   const [selectedPokemon, setSelectedPokemon] = useState(
-    initialSelectedPokemon as selectedPokemonType
+    initialSelectedPokemon as selectedPokemonType,
   );
 
   const handlePokemonDetail = (id: number) => {
     setShowModal(true);
     const selectedPokemon = pokemonList.find(
-      (pokemon: any) => pokemon.id === id
+      (pokemon: any) => pokemon.id === id,
     );
     setSelectedPokemon(selectedPokemon ?? initialSelectedPokemon);
   };
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-center mt-6">Pokedex</h1>
+      <h1 className="text-3xl font-bold underline text-center mt-6">
+        Pokedex App
+      </h1>
       <Pokemons list={pokemonList} onShowDetail={handlePokemonDetail} />
       {showModal
         ? createPortal(
@@ -41,12 +43,12 @@ const PokemonLayout = () => {
               onCloseModal={() => setShowModal(false)}
               title={`${selectedPokemon?.name
                 .charAt(0)
-                .toUpperCase()}${selectedPokemon?.name.slice(1)}, Nº ${
-                selectedPokemon?.id
-              }`}
+                .toUpperCase()}${selectedPokemon?.name.slice(
+                1,
+              )}, Nº ${selectedPokemon?.id}`}
               selectedPokemon={selectedPokemon}
             />,
-            document.getElementById("modal-root") as HTMLElement
+            document.getElementById("modal-root") as HTMLElement,
           )
         : null}
     </>
