@@ -28,3 +28,5 @@ export default defineConfig({
     },
   },
 });
+
+global.fetch = (url, options) => fetch(cookieJar, url, options);

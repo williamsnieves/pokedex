@@ -4,9 +4,14 @@ import { selectedPokemonType } from "./layouts/PokemonLayout";
 type PokemonPropsType = {
   pokemon: selectedPokemonType;
   onShowDetail: (id: number) => void;
+  onShowNothing?: () => void;
 };
 
-export const Pokemon: FC<PokemonPropsType> = ({ pokemon, onShowDetail }) => {
+export const Pokemon: FC<PokemonPropsType> = ({
+  pokemon,
+  onShowDetail,
+  onShowNothing,
+}) => {
   const handlePokemonDetail = () => {
     onShowDetail(pokemon.id);
   };
@@ -14,6 +19,7 @@ export const Pokemon: FC<PokemonPropsType> = ({ pokemon, onShowDetail }) => {
   return (
     <div
       key={pokemon.name}
+      data-testid="pokemon"
       className="bg-gray-200 rounded-lg shadow-md"
       onClick={handlePokemonDetail}
     >
@@ -35,6 +41,7 @@ export const Pokemon: FC<PokemonPropsType> = ({ pokemon, onShowDetail }) => {
         </p>
         <img className="w-32 h-32" src={pokemon.image} alt={pokemon.name} />
       </div>
+      <button onClick={onShowNothing}>test</button>
     </div>
   );
 };

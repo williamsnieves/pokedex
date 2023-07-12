@@ -26,7 +26,7 @@ type PokemonType = {
   type: { name: string; url: string };
 };
 
-const usePokemonDetail = (selectedPokemon: selectedPokemonType) => {
+export default function usePokemonDetail(selectedPokemon: selectedPokemonType) {
   const [pokemonDetail, setPokemonDetail] = useState({} as PokemonDetailType);
 
   useEffect(() => {
@@ -79,6 +79,4 @@ const usePokemonDetail = (selectedPokemon: selectedPokemonType) => {
   }, []);
 
   return { pokemonDetail };
-};
-
-export default usePokemonDetail;
+}
