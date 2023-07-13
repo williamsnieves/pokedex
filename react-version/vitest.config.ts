@@ -6,6 +6,7 @@ export default defineConfig({
     globals: true,
     setupFiles: path.resolve(__dirname, "./test/setup.ts"),
     exclude: [...defaultExclude, "**/node_modules/**"],
+    environment: "jsdom",
     environmentMatchGlobs: [
       ["**/*.test.tsx", "jsdom"],
       ["**/*.component.test.ts", "jsdom"],
@@ -28,5 +29,3 @@ export default defineConfig({
     },
   },
 });
-
-global.fetch = (url, options) => fetch(cookieJar, url, options);
